@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QuickStart on ion</title><link>https://pionion.org/quickstart/</link><description>Recent content in QuickStart on ion</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://pionion.org/quickstart/index.xml" rel="self" type="application/rss+xml"/><item><title>ion-sfu</title><link>https://pionion.org/quickstart/ion-sfu/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/quickstart/ion-sfu/</guid><description>Quick Start ☕️Running the json-rpc signaling server If you have a local golang environment already setup, simply run
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>QuickStart on ion</title>
+    <link>https://pionion.org/quickstart/</link>
+    <description>Recent content in QuickStart on ion</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://pionion.org/quickstart/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ion-sfu</title>
+      <link>https://pionion.org/quickstart/ion-sfu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pionion.org/quickstart/ion-sfu/</guid>
+      <description>Quick Start ☕️Running the json-rpc signaling server If you have a local golang environment already setup, simply run
 go build ./cmd/signal/json-rpc/main.go &amp;amp;&amp;amp; ./main -c config.toml If you prefer a containerized environment, you can use the included Docker image
 docker run -p 7000:7000 -p 5000-5020:5000-5020/udp pionwebrtc/ion-sfu:latest-jsonrpc ☕️Running the grpc signaling server If you have a local golang environment already setup, simply run
-go build ./cmd/signal/grpc/main.go &amp;amp;&amp;amp; ./main -c config.toml If you prefer a containerized environment, you can use the included Docker image</description></item></channel></rss>
+go build ./cmd/signal/grpc/main.go &amp;amp;&amp;amp; ./main -c config.toml If you prefer a containerized environment, you can use the included Docker image</description>
+    </item>
+    
+  </channel>
+</rss>
