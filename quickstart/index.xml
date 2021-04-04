@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1. QuickStart on ion</title><link>https://pionion.org/quickstart/</link><description>Recent content in 1. QuickStart on ion</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://pionion.org/quickstart/index.xml" rel="self" type="application/rss+xml"/><item><title>1. From Docker</title><link>https://pionion.org/quickstart/docker/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/quickstart/docker/</guid><description>Docker How to use Docker commands require the ionnet docker network
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1. QuickStart on ion</title><link>https://pionion.org/quickstart/</link><description>Recent content in 1. QuickStart on ion</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://pionion.org/quickstart/index.xml" rel="self" type="application/rss+xml"/><item><title>1. From Docker</title><link>https://pionion.org/quickstart/docker/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/quickstart/docker/</guid><description>Docker 1. Create network Docker commands require the ionnet docker network
 First run:
-docker network create ionnet Deployment 1. Clone git clone https://github.com/pion/ion 2. Setup Firstly pull images. Skip this command if you want build images locally
+docker network create ionnet 2. Deployment 1. Clone git clone https://github.com/pion/ion 2. Setup Firstly pull images. Skip this command if you want build images locally
 docker-compose pull 3. Run docker-compose up 4. Expose Ports (Skip if only exposing locally)
 Ensure the following ports are exposed or forwarded. You can find them in *.toml
-5000-5200/udp 5. Chat Head over to Ion Web App to bring up the front end.</description></item><item><title>2. From Scripts</title><link>https://pionion.org/quickstart/scripts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/quickstart/scripts/</guid><description>1. Install Deps ./scripts/installDeps.sh It will install all depend modules, support mac, ubuntu, centos Check these modules installed:nats-server redis
-2. Make Key ./scripts/makeKey.sh It will generate key files to configs
-3. Run First Time
-./scripts/allStart.sh It will start all services we need
-./scripts/allStop.sh It will stop all services
-./scripts/allRestart.sh It will restart all services we need
-There is also individual module script in scripts folder, you can use them when you debug individual module</description></item></channel></rss>
+15000-15200/udp Tips: max clients=port-range/2</description></item><item><title>2. From Scripts</title><link>https://pionion.org/quickstart/scripts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/quickstart/scripts/</guid><description>1. Install Deps ./scripts/deps_inst It will install all depend modules, support mac, ubuntu, centos Check these modules installed:nats-server redis
+2. Run deps ./scripts/deps start redis ./scripts/deps start nats-server Check redis and nats-server running
+On mac and linux, use ps:
+ps -ef|grep -E &amp;quot;redis|nats&amp;quot; 3. Run all services First time:
+./scripts/all start It will start all services we need
+Next time:
+./scripts/all restart It will restart all services we need
+4. Test Test by ion-app-web or ion-app-flutter</description></item></channel></rss>
