@@ -1,14 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>4. Develop on ion</title><link>https://pionion.org/develop/</link><description>Recent content in 4. Develop on ion</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://pionion.org/develop/index.xml" rel="self" type="application/rss+xml"/><item><title>1. Architecture</title><link>https://pionion.org/develop/arch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/develop/arch/</guid><description>before develop modules, you should know how it works
-1. Architecture 2. Signal flow SDK&amp;lt;---grpc---&amp;gt;BIZ&amp;lt;---mq---&amp;gt;ISLB&amp;lt;---mq---&amp;gt;BIZ&amp;lt;---grpc---&amp;gt;SDK | | | |----------&amp;gt;Redis&amp;lt;---------| SDK send signals to BIZ by grpc (example:join/negotiate and so on) BIZ do business handle and send signals/events to BIZ/ISLB by nats BIZ get a SFU node from ISLB when SDK join a session BIZ exchange SDP with SFU by nats SDK and SFU start ICE, send/recv video streams after ICE state is connected Other BIZ will receive events at the same time(example:some one joined/publish stream) 3.</description></item><item><title>2. back-end</title><link>https://pionion.org/develop/backend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/develop/backend/</guid><description>This show how to do develop ion-biz Other services are similar
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>4. Develop on ion</title>
+    <link>https://pionion.org/develop/</link>
+    <description>Recent content in 4. Develop on ion</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://pionion.org/develop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Architecture</title>
+      <link>https://pionion.org/develop/arch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pionion.org/develop/arch/</guid>
+      <description>before develop modules, you should know how it works
+1. Architecture 2. Signal flow SDK&amp;lt;---grpc---&amp;gt;BIZ&amp;lt;---mq---&amp;gt;ISLB&amp;lt;---mq---&amp;gt;BIZ&amp;lt;---grpc---&amp;gt;SDK | | | |----------&amp;gt;Redis&amp;lt;---------|  SDK send signals to BIZ by grpc (example:join/negotiate and so on) BIZ do business handle and send signals/events to BIZ/ISLB by nats BIZ get a SFU node from ISLB when SDK join a session BIZ exchange SDP with SFU by nats SDK and SFU start ICE, send/recv video streams after ICE state is connected Other BIZ will receive events at the same time(example:some one joined/publish stream)  3.</description>
+    </item>
+    
+    <item>
+      <title>2. back-end</title>
+      <link>https://pionion.org/develop/backend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pionion.org/develop/backend/</guid>
+      <description>This show how to do develop ion-biz Other services are similar
 1. Main The main func did these things:
-parse command line params init modules register grpc services start server cmd/biz/main.go 2. Real business handle The main business logic is here:
-pkg/node/biz/server.go room and peer management signal handle like: join/leave and so on exchange signal with other module/service by grpc/nats 3. Add/Modify your code 4. Build go build -o bin/biz cmd/biz/*.</description></item><item><title>3. ion-sdk-js</title><link>https://pionion.org/develop/ion-sdk-js/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/develop/ion-sdk-js/</guid><description>This page show how to develop ion-sdk-js
+ parse command line params init modules register grpc services start server  cmd/biz/main.go 2. Real business handle The main business logic is here:
+pkg/node/biz/server.go  room and peer management signal handle like: join/leave and so on exchange signal with other module/service by grpc/nats  3. Add/Modify your code 4. Build go build -o bin/biz cmd/biz/*.</description>
+    </item>
+    
+    <item>
+      <title>3. ion-sdk-js</title>
+      <link>https://pionion.org/develop/ion-sdk-js/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pionion.org/develop/ion-sdk-js/</guid>
+      <description>This page show how to develop ion-sdk-js
 1. Install nodeJS and npm https://nodejs.org
 2. Add/Modify code The main code is here
 ion-sdk-js/src written by TS
 4. Build cd ion-sdk-js npm i you will see new sdk in:
 ion-sdk-js/dist 5. Test with html import your new sdk to your web app (for example: pubsubtest)
 modify these lines:
-&amp;lt;script src=&amp;quot;yoursdkpath/ion-sdk-js/dist/ion-sdk.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;yoursdkpath/ion-sdk-js/dist/json-rpc.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; tips:replace yoursdkpath with real path
-run this web app with chrome and test</description></item><item><title>4. load-testing</title><link>https://pionion.org/develop/load-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pionion.org/develop/load-testing/</guid><description>This show how to do load-testing about https://github.com/pion/ion-sfu
-1. Prepare Two High performance server(cpu not shared) Server A Server B 2. Build and run ion-sfu SSH login A Build and run ion-sfu(allrpc version) 3. Build and run ion-load-tool SSH login B Build and run ion-load-tool(https://github.com/pion/ion-sdk-go in example) 4. record cpu/mem usage and clients/bandwidths using dstat to see cpu/mem usage use ion-load-tool to see clients/bandwidths .</description></item></channel></rss>
+ &amp;lt;script src=&amp;quot;yoursdkpath/ion-sdk-js/dist/ion-sdk.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;yoursdkpath/ion-sdk-js/dist/json-rpc.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; tips:replace yoursdkpath with real path
+run this web app with chrome and test</description>
+    </item>
+    
+    <item>
+      <title>4. load-testing</title>
+      <link>https://pionion.org/develop/load-testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pionion.org/develop/load-testing/</guid>
+      <description>This show how to do load-testing about https://github.com/pion/ion-sfu
+1. Prepare  Two High performance server(cpu not shared)  Server A Server B    2. Build and run ion-sfu  SSH login A Build and run ion-sfu(allrpc version)  3. Build and run ion-load-tool  SSH login B Build and run ion-load-tool(https://github.com/pion/ion-sdk-go in example)  4. record cpu/mem usage and clients/bandwidths  using dstat to see cpu/mem usage use ion-load-tool to see clients/bandwidths  .</description>
+    </item>
+    
+  </channel>
+</rss>
